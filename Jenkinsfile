@@ -43,6 +43,12 @@ pipeline {
                 }
             }
         }
+      
+      stage('Test') {
+      steps {
+        sh 'mvn sonar:sonar -Dsonar.host.url=http://sonarqube-1:9000 -Dlicense.skip=true'
+      }
+    }
 
         stage("publish to nexus") {
             steps {
